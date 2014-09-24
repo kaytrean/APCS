@@ -69,7 +69,7 @@ public boolean lastDigit(int a, int b, int c) {
 	int A = a % 10;
 	int B = b % 10;
 	int C = c % 10;
-	if (A==B {
+	if (A==B) {
 		return true;
 	} else if (A==C){
 		return true;
