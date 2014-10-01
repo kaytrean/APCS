@@ -3,7 +3,7 @@ public String stringBits(String str) {
     string f = "";
     int n = 0;
     while (n < str.length()) {
-	a = a+str.charTa(n);
+	f = f+str.charTa(n);
 	n=n+2;
     }
     return f;
