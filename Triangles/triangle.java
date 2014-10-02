@@ -1,0 +1,43 @@
+public class triangle {
+    public String triangle1(int s){
+	String triange = "";
+	int h = s;
+	int w = 1;
+	int it = 1;
+	while (h > 0){
+	    while (it > 0){
+		triangle = triangle + "*";
+		it = it - 1;
+	    }
+	    w = w + 1;
+	    it = w;
+	    triangle = triangle + "\n";
+	    h = h -1;
+	}
+	return triangle;
+    }
+
+    public String triangle2(int s){
+	String triangle = "";
+	int h = s;
+	int w = 1;
+	int it = 1;
+	int q = s;
+	while (h > 0) {
+	    while (q > it){
+		triangle = triangle + " "
+		    q= q-1
+		    }
+	    while (it > 0){
+		triangle = triangle + "*";
+		it = it-1;
+	    }
+	    w = w + 1;
+	    it = w;
+	    triangle = triangle + "\n";
+	    q = s;
+	    h = h-1;
+	}
+	return triangle;
+    }
+}
