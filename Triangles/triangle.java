@@ -40,4 +40,35 @@ public class triangle {
 	}
 	return triangle;
     }
-}
+
+    public String triangle3(int s){
+	String triangle= "";
+	int row=0;
+	while(row < s){
+	    int star= (2 * row) + 1;
+	    int n = s-row-1;
+	    while(n>=0){
+		triangle= triangle + " ";
+		n= n-1;
+	    }
+	    while (star>0){
+		triangle= triangle+"*";
+		star= star - 1;
+	    }
+	    triangle= triangle + "\n";
+	    row = row + 1;
+	}
+	return triangle;
+    }
+
+    public String diamond(int s){
+	String diamond= "";
+	diamond = diamond + triangle3(s/2);
+	for (int x=0;x<h;x+=1){
+	    diamond+="*";
+	}
+	diamond = diamond + "\n";
+    }
+
+	
+		
