@@ -1,14 +1,6 @@
 import java.util.Random;
 
 public class monster extends BaseChar {
-    public void monster() {
-	int hp = (80 + Random.nextInt(10));
-	int def = (50 + Random.nextInt(20));
-	int atk = (30 + Random.nextInt(20));
-	int spd = (20 + Random.nextInt(50));
-	int lck = (40 + Random.nextInt(10));
-	String n = "Fowl Beast";
-    }
 
     public void claws(BaseChar other){
 	if Random.nextInt(10) <= 8 {
