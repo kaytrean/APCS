@@ -7,6 +7,10 @@ public class Greeter{
     public void setGreeting (String s){
 	greeting = s;
     }
+
+    public String getGreeting() {
+	return greeting;
+    }
     
     public void greet(){
 	System.out.println(greeting);
