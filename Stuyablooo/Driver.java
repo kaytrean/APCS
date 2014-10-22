@@ -22,10 +22,10 @@ public class Driver {
 
 	System.out.print("Hello " + name + "! Enter the world of GENERIC RPG FANTASY LAND");
 	for (i=1;i<3;i=i+1) {
-	try{
-	    Thread.sleep(1000);
-	} catch(Exception e){}
-	System.out.print(".");
+	    try{
+		Thread.sleep(1000);
+	    } catch(Exception e){}
+	    System.out.print(".");
 	}
         try{
 	    Thread.sleep(1000);
@@ -37,10 +37,10 @@ public class Driver {
 	System.out.print("You wake up in a forest. (Hint: The 'enter' button is your friend.)");
 	enter = in.nextLine();
         for (i=1;i<4;i=i+1) {
-	try{
-	    Thread.sleep(1000);
-	} catch(Exception e){}
-	System.out.print(".");
+	    try{
+		Thread.sleep(1000);
+	    } catch(Exception e){}
+	    System.out.print(".");
 	}
 	try{
 	    Thread.sleep(1000);
@@ -49,10 +49,10 @@ public class Driver {
 
 	enter = in.nextLine();
         for (i=1;i<4;i=i+1) {
-	try{
-	    Thread.sleep(1000);
-	} catch(Exception e){}
-	System.out.print(".");
+	    try{
+		Thread.sleep(1000);
+	    } catch(Exception e){}
+	    System.out.print(".");
 	}
 	try{
 	    Thread.sleep(1000);
@@ -67,13 +67,13 @@ public class Driver {
 	    spell = in.nextLine();
 	    System.out.println(mage.spell(monster, spell));
 	    if (mattack.equals("0") && monster.getACC() > 20) {
-	        monster.claws(mage); 
+		monster.claws(mage); 
 	    }
 	    if (mattack.equals("1") && monster.getACC() > 20) {
-	        monster.teeth(mage); 
+		monster.teeth(mage); 
 	    }
 	    if (mattack.equals("2") && monster.getACC() > 40) {
-	        monster.wrath(mage);
+		monster.wrath(mage);
 	    }
 	}
     }
