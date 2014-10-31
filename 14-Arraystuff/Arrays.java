@@ -146,3 +146,44 @@ public class Arrays {
     	}
     	return result;
     }
+    
+    //maxMirror
+    public int maxMirror(int[] nums) {
+    	int[] numsCopy = new int[nums.length];
+    	for (int i = nums.length - 1, j = 0; i >= 0; i--, j++)
+        	numsCopy[j] = nums[i];
+ 
+    	int max = 0;
+ 
+    	for (int i = 0; i < nums.length; i++) {
+        	int count = 0;
+        	int a = i;
+        	int b = 0;
+        	boolean boo = false;
+ 
+        	while (a < nums.length && b < nums.length) {
+            	if (!boo) {
+                	if (nums[a] != numsCopy[b]) b++;
+                	else {
+                    	boo = true;
+                    	count = 1;
+                    	a= a + 1;
+                    	b= b + 1;
+                	}
+            	} else {
+                	if (nums[a] == numsCopy[b]) {
+                    	count= count + 1;
+                    	a= a + 1;
+                    	b= b + 1;
+                	} else {
+                    	if (count > max) max = count;
+                    	a = i;
+                    	boo = false;
+                	}
+            	}
+            	if (count > max) max = count;
+        	}
+    	}
+    	return max;
+    }
+}
