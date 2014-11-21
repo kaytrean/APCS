@@ -98,10 +98,30 @@ public class WordSearch {
 	String s = reverse(w);
 	addWordV(s, row, col);
     }
-		
+
+    public void addWordD1(String w, int row, int col){
+	int r = row;
+	int c = col;
+	if ((w.length() + row <= board.length)&&
+	    (row >= 0)&&
+	    (col >= 0)&&
+	    (col < board[0].length)&&
+	    (w.length() + col <= board[0].length)&&
+	    (row < board[0].length)){
+	    for (int i = 0; i< w.length(); i++){
+		board[r][c]   = w.charAt(i);
+		r++;
+		c++;
+	    }
+	}
+    }
+		  
+	    
+  
     public static void main(String[] args) {
 	WordSearch w = new WordSearch();
 	System.out.println(w);
+	
 	w.addWordV("hello",3,15); // should work
 	w.addWordV("look",4,15); // test illegal overlap
        	w.addWordV("look",6,15); // test legal overlap       
@@ -109,6 +129,10 @@ public class WordSearch {
 	w.addWordV("look",3,55); // test illegal col
 	w.addWordVR("hello",5,10); // test reverse direction
 	w.addWordV("pool",3,10); // test legal overlap in reverse direction
+	w.addWordH("mocasins",12,4);
+
+	w.addWordHR("baby",10,12);
+	w.addWordH("kiwi",3,10);
 	System.out.println(w);
     }
 }
