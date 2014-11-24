@@ -24,115 +24,181 @@ public class WordSearch {
 	return s;
     }
 
-    public String reverse(String w){
-	String s = "";
-	for (int i = w.length() - 1;i >= 0;i--){
-	    s += w.charAt(i);
-	}
-	return s;
-    }
-
-    public boolean overlapH(String a, int row, int col){
-	int i = 0;
+    public boolean illegalOverlap(String d, String w, int row, int col){
+	boolean result=false;
 	int c = col;
-	while (i < a.length()){
-	    if ((a.charAt(i) == board[row][c])||
-		(board[row][c] == '.')){
-		i++;
-		c++;
-	    }
-	    else {return false;}
-	}
-	return true;
-    }
-
-    public boolean overlapV(String a, int row, int col){
-	int i = 0;
 	int r = row;
-	while (i < a.length()){
-	    if ((a.charAt(i) == board[r][col])||
-		(board[r][col] == '.')){
-		i++;
+	if (d.equals("right")){
+	    for (int i=0;i<w.length();i++){
+		if(!(board[row][c]=='.' || board[row][c]==w.charAt(i))){
+		    result=true;
+		}
+	        c++;
+	    }
+	}
+	else if (d.equals("left")){
+	    for (int i=0;i<w.length();i++){
+		if(!(board[row][c]=='.' || board[row][c]==w.charAt(i))){
+		    result=true;
+		}
+	        c--;
+	    }
+	}
+	else if (d.equals("down")){
+	    for (int i=0;i<w.length();i++){
+		if(!(board[r][col]=='.' || board[r][col]==w.charAt(i))){
+		    result=true;
+		}
 		r++;
 	    }
-	    else {return false;}
 	}
-	return true;
-    }
-
- 
-    public void addWordH(String w, int row, int col){
-	int c = col;
-	if ((w.length() + col <= board[0].length)&&
-	    (col >= 0)&&
-	    (row >= 0 && row < board.length)){
-	    if (overlapH(w, row, col) == true){
-		for (int i=0; i < w.length();i++){
-		    board[row][c] = w.charAt(i);
-		    c++;
+	else if (d.equals("up")){
+	    for (int i=0;i<w.length();i++){
+		if(!(board[r][col]=='.' || board[r][col]==w.charAt(i))){
+		    result=true;
 		}
+		r--;
 	    }
 	}
-    }
-
-    public void addWordHR(String w, int row, int col){
-	String s = reverse(w);
-	addWordH(s, row, col);
-    }
-
-    public void addWordV(String w, int row, int col){
-	int r = row;
-	if ((w.length() + row <= board.length)&&
-	    (row >= 0)&&
-	    (col >= 0 && col < board[0].length)){
-	    if (overlapV(w, row, col) == true){
-		for (int i = 0; i < w.length();i++){
-		    board[r][col] = w.charAt(i);
-		    r++;
+	else if (d.equals("southwest")){
+	    for (int i=0;i<w.length();i++){
+		if(!(board[r][c]=='.' || board[r][c]==w.charAt(i))){
+		    result=true;
 		}
-	    }
-	}
-    }
-
-    public void addWordVR(String w, int row, int col){
-	String s = reverse(w);
-	addWordV(s, row, col);
-    }
-
-    public void addWordD1(String w, int row, int col){
-	int r = row;
-	int c = col;
-	if ((w.length() + row <= board.length)&&
-	    (row >= 0)&&
-	    (col >= 0)&&
-	    (col < board[0].length)&&
-	    (w.length() + col <= board[0].length)&&
-	    (row < board[0].length)){
-	    for (int i = 0; i< w.length(); i++){
-		board[r][c]   = w.charAt(i);
 		r++;
+		c--;
+	    }
+	}
+	return result;
+    }
+     public void addWordH(String d, String w, int row,int col){
+	int c = col;
+	if (row>=board.length){
+	    row=board.length-1;
+	}
+	else if(row<0){
+	    row=0;
+	}
+	if (d.equals("right")){
+	    if (c<0){
+		c=0;
+	    }
+	    if ((w.length()+c)>board[0].length){
+		c=board[0].length-w.length();
+	    }
+	    if (illegalOverlap(d, w, row, c)){
+		System.out.println("Cannot overlap at row"+row+" column"+c+" with " + w);
+		return;
+	    }
+	    for (int i=0;i< w.length();i++){
+		board[row][c]=w.charAt(i);
 		c++;
 	    }
 	}
+	else{
+	    if(c>board[0].length){
+		c=board[0].length-1;
+	    }
+	    if (c-(w.length())<0){
+		c=w.length()-1;
+	    }
+	    if (illegalOverlap(d, w, row, c)){
+		System.out.println("Cannot overlap at row"+row+" column"+c+" with " + w);
+		return;
+	    }
+	    for (int i=0;i< w.length();i++){
+		board[row][c]=w.charAt(i);
+		c--;
+	    }
+		
+	}
+     }
+     
+      public void addWordV(String d, String w, int row, int col){
+	int r = row;
+	if (col>board[0].length){
+	    col=board[0].length-1;
+	}
+	else if(col<0){
+	    col=0;
+	}
+	if (d.equals("down")){
+	    if(r<0){
+		r=0;
+	    }
+	    if((w.length()+r)>board.length){
+		r=board.length-w.length();
+	    }
+	    if (illegalOverlap(d, w, r, col)){
+		System.out.println("Cannot overlap at row"+r+" column"+col+" with " + w);
+		return;
+	    }
+	    for(int i=0;i<w.length();i++){
+		board[r][col]=w.charAt(i);
+		r++;
+	    }
+	}
+	else {
+	    if(r>=board.length){
+		r=board.length-1;
+	    }
+	    if((r-w.length())<0){
+		r=w.length()-1;
+	    }
+	    if (illegalOverlap(d, w, r, col)){
+		System.out.println("Cannot overlap at row"+r+" column"+col+" with " + w);
+		return;
+	    }
+	    for(int i=0;i<w.length();i++){
+		board[r][col]=w.charAt(i);
+		r--;
+	    }
+	}
     }
-		  
-	    
-  
-    public static void main(String[] args) {
-	WordSearch w = new WordSearch();
-	System.out.println(w);
-	
-	w.addWordV("hello",3,15); // should work
-	w.addWordV("look",4,15); // test illegal overlap
-       	w.addWordV("look",6,15); // test legal overlap       
-	w.addWordV("look",-3,20); // test illegal row      
-	w.addWordV("look",3,55); // test illegal col
-	w.addWordVR("hello",5,10); // test reverse direction
-	w.addWordV("pool",3,10); // test legal overlap in reverse direction
-	w.addWordH("mocasins",12,4);
-
-	w.addWordHR("baby",10,12);
-	w.addWordH("kiwi",3,10);
-	System.out.println(w);
-    }
+    
+     public void addWordD(String d, String w, int row, int col){
+	int r=row;
+	int c=col;
+	if (c>board[0].length){
+	    c=board[0].length-1;
+	}
+	else if(col<0){
+	    c=0;
+	}
+	if (r>=board.length){
+	    r=board.length-1;
+	}
+	else if(r<0){
+	    r=0;
+	}
+	if (d.equals("southwest")){
+	    for(int i=0;i<w.length();i++){
+		board[r][c]=w.charAt(i);
+		r++;
+		c--;
+	    }
+	}
+	if (d.equals("southeast")){
+	    for(int i=0;i<w.length();i++){
+		board[r][c]=w.charAt(i);
+		r++;
+		c++;
+	    }
+	}
+	if (d.equals("northeast")){
+	    for(int i=0;i<w.length();i++){
+		board[r][c]=w.charAt(i);
+		r--;
+		c++;
+	    }
+	}
+	if (d.equals("northwest")){
+	    for(int i=0;i<w.length();i++){
+		board[r][c]=w.charAt(i);
+		r--;
+		c--;
+	    }
+	}
+     }
 }
+    
