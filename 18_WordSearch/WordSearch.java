@@ -24,6 +24,56 @@ public class WordSearch {
 	return s;
     }
 
+ public boolean matching(int n, String w, int r, int c){
+	boolean matching = true;
+	char val;
+	for (int i=0;i<w.length();i++){
+	    val = board[r][c];
+	    if (!(val=='.') && !(val==w.charAt(i))){
+		matching = false;
+	    }
+	    if (n == 0){
+		c++;
+	    }
+	    else if (n == 1){
+		c--;
+	    }
+	    else if (n == 2){
+		r++;
+	    }
+	    else if (n == 3){
+		r--;
+	    }
+	    else if (n == 4){
+		r--;
+		c++;
+	    }
+	    else if (n == 5){
+		r++;
+		c++;
+	    }
+	    else if (n == 6){
+		r++;
+		c--;
+	    }
+	    else if (n == 7){
+		r--;
+		c--;
+	    }
+	}
+	return matching;
+    }
+    char[] letters = new char[]{'a','b','c','d','e','f','g','h','i','j','k','l',
+				'm','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+				 public void fill(){
+	for (int row=0;row<board.length;row++){
+	    for (int col=0;col<board[0].length;col++){
+		if (board[row][col] == '.'){
+		    board[row][col] = letters[rnd.nextInt(letters.length)];
+		}
+	    }
+	}
+    } 
     public boolean illegalOverlap(String d, String w, int row, int col){
 	boolean result=false;
 	int c = col;
