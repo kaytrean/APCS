@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class orderedsarray extends Sarray {
+public class orderedsarray extends Sarray2 {
     
 
     public orderedsarray() {
@@ -32,7 +32,7 @@ public class orderedsarray extends Sarray {
 		if (s.substring(i, i+1).compareTo(r.substring(i, i+1)) > 0){
 		    return r;
 		}
-		else return s; //if its the same word, then just return s
+		else return s; //if it's the same word, return s
 	    }
 	}
 	if (s.length() >= r.length()){
@@ -43,7 +43,8 @@ public class orderedsarray extends Sarray {
 		if (s.substring(i, i+1).compareTo(r.substring(i, i+1)) > 0){
 		    return r;
 		}
-		else return s; //if its the same word, then just return s
+		else return s; 
+		//if it's the same word, return s
 	    }
 	}
     }
@@ -69,7 +70,7 @@ public class orderedsarray extends Sarray {
     public int size() {
 	return last + 1;
 	    
-	// returns the number of items in the list (not the array size)
+	// returns the number of items in the list
     }
 
     public int get(int index) {
@@ -104,7 +105,7 @@ public class orderedsarray extends Sarray {
 	// removes the item at index i
         // returns the old value
     }
-    public void makeBigger(int[] before, int numSpaces){
+    public void Larger(int[] before, int numSpaces){
 	int[] longer = new int[data.length + numSpaces];
 	System.arraycopy(data,0,longer,0,data.length);
 	data = new int[longer.length];
