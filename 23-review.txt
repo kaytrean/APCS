@@ -1,0 +1,7 @@
+https://github.com/jlox/apfinal.git
+
+~only thing I don't understand is the test.java file, which I can only assume was a test in order to make the red gui border for their game
+~initally confused that their driver was inside guimon.java around line 530
+~not sure what line 39 in guimon.java accomplishes, I believe it's just an initial commit to create the world
+~smart how they decided that basechar would be for the humans and not the pokemon, leaving room for improvement with more oppnents in the future
+~clearly labeled files, comments in each section provides a humorous way to describe what each function is
